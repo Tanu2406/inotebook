@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env.local' }); 
 const connectToMongo = require('./db');
 const express = require('express');
 const morgan = require('morgan');
