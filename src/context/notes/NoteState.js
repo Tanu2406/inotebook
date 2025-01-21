@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env.local' }); 
+
 import { useState } from "react";
 import NoteContext from "./noteContext";
 

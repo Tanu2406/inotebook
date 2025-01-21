@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env.local' }); 
+
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 

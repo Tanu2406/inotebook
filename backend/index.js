@@ -2,7 +2,7 @@ require('dotenv').config({ path: '../.env.local' });
 const connectToMongo = require('./db');
 const express = require('express');
 const morgan = require('morgan');
-var cors = require('cors');
+const cors = require('cors');
 
 connectToMongo();
 
@@ -10,7 +10,9 @@ const port = process.env.PORT || 5000;
 
 var app = express();
 
-app.use(cors());
+app.use(cors({
+    origin:  ['http://localhost:3000', 'https://inotebook-khaki.vercel.app'], // Frontend domain
+}));
 app.use(express.json()); 
 app.use(morgan('combined')); 
 
