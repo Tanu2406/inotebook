@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '../.env.local' }); 
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -5,12 +6,12 @@ const Signup = (props) => {
   
   const [credentials,setCredentials] = useState({name: "" ,email: "",password:"", cpassword: ""});
   const navigate = useNavigate();
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const handleSubmit = async(e)=>{
       e.preventDefault();
 
      const {name,email,password} = credentials;
-      const response = await fetch("http://localhost:3000/api/auth/createuser", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/createuser`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

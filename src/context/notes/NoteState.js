@@ -1,14 +1,14 @@
+require('dotenv').config({ path: '../.env.local' }); 
 import { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
-  const host = "http://localhost:3000";
  const [notes, setNotes] = useState([]);
-
+ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
    const getNotes = async () => {
    
     try {
-    const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+    const response = await fetch(`${API_BASE_URL}/api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const NoteState = (props) => {
 
   const addNote = async (title, description, tag) => {
    
-    const response = await fetch(`${host}/api/notes/addnote`, {
+    const response = await fetch(`${API_BASE_URL}/api/notes/addnote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const NoteState = (props) => {
  
   const deleteNote = async (id) => {
 
-      const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/notes/deletenote/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const NoteState = (props) => {
 
   const editNote = async (id, title, description, tag) => {
     
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

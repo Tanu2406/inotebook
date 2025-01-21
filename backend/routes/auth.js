@@ -1,13 +1,13 @@
 const express = require('express');
 const User = require('../models/User');
 const router = express.Router();
-
+require('dotenv').config({ path: '../.env.local' }); 
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
 const Note = require('../models/Note');
-const JWT_SECRET ="happy55";
+const JWT_SECRET =process.env.JWT_SECRET;
 
 
 router.get('/fetchallnotes', fetchuser, async (req, res) => {
